@@ -165,20 +165,6 @@ public class MySortableHashMapImpl<K extends Comparable<K>, V> implements MyHash
 
     @Override
     public Iterator<K> iterator() {
-        return new Iterator<K>() {
-            final List<K> keyList = getKeyList();
-            int i = 0;
-
-            @Override
-            public boolean hasNext() {
-                if (i < keyList.size()) return keyList.get(i) != null;
-                return false;
-            }
-
-            @Override
-            public K next() {
-                return keyList.get(i++);
-            }
-        };
+        return new MyIterator<K>(getKeyList());
     }
 }
